@@ -38,7 +38,7 @@
                                 <i class="large photo icon"></i><% } %>
                         </td>
                         <td class="center aligned">
-                            <% if(currentUser && question.author.id.equals(currentUser._id)){ %>
+                            <% if((currentUser.admin) || currentUser && question.author.id.equals(currentUser._id)){ %>
     
                                 <a class="ui icon" id="tableIcon" href="/questions/<%= question._id %>/edit">
                                     <i class="large write icon blue"></i>
@@ -46,7 +46,7 @@
                             <% } %>
                         </td>
                         <td class="center aligned">
-                            <% if(currentUser && question.author.id.equals(currentUser._id)){ %>
+                            <% if((currentUser.admin) || currentUser && question.author.id.equals(currentUser._id)){ %>
     
                                 <form id="delete" action="/questions/<%= question._id %>?_method=DELETE" method="POST">
                                     <button class="ui icon noborder tableicon"><i class="large remove circle icon red"></i></button>

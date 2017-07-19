@@ -15,11 +15,12 @@ var questionRoutes          = require("./routes/questions.js"),
     indexRoutes             = require("./routes/index.js"),
     playRoutes              = require("./routes/play.js");
     
-console.log(process.env.DATABASEURL);
+var url = process.env.DATABASEURL || "mongodb://localhost/trivia"
 
+console.log(process.env.DATABASEURL);
 // Configuration
 
-mongoose.connect(process.env.DATABASEURL);
+mongoose.connect(url);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -27,6 +28,7 @@ app.use(flash());
 
 
 // Passport Configuration
+
 app.use(require("express-session")({
     secret: "PurpleMonkeyDishwasher",
     resave: false,

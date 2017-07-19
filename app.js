@@ -14,10 +14,12 @@ var express 	            = require("express"),
 var questionRoutes          = require("./routes/questions.js"),
     indexRoutes             = require("./routes/index.js"),
     playRoutes              = require("./routes/play.js");
+    
+console.log(process.env.DATABASEURL);
 
 // Configuration
-mongoose.connect("mongodb://trivia:vagma832@ds161012.mlab.com:61012/trivialmatters");
-// mongoose.connect("mongodb://localhost/trivia");
+// mongoose.connect("mongodb://trivia:vagma832@ds161012.mlab.com:61012/trivialmatters");
+mongoose.connect(process.env.DATABASEURL);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));

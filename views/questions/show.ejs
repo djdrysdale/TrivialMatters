@@ -1,0 +1,16 @@
+<% include ../partials/header %>
+
+<div class="ui main text container segment">
+
+    <h2>Category: <%= question.category %></h2>
+    <img src="<%= question.media %>"> 
+    <p><strong>Q: </strong><%= question.question %></p>
+    <p><strong> A: </strong><%= question.answer %></p>
+    <form action="/questions/<%= question.id %>?_method=DELETE" method="POST">
+        <button class="ui red basic button">Delete</button>
+    </form>
+    <p><a href="/questions">See all questions</a></p>
+    
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,74 @@
+<% include ../partials/header %>
+
+<div class="ui main container">
+    
+    <div class="ui text container">
+        <h1 class="ui huge header">Manage Questions</h1>
+    </div>
+    
+    <div class="ui text vertical padded segment container">
+        
+        <table class="ui very basic sixteen column padded table">
+            <thead>
+                <tr>
+                    <th class="two wide">Author</th>
+                    <th class="two wide">Category</th>
+                    <th class="nine wide">Question</th>
+                    <th class="one wide"></th>
+                    <th class="one wide"></th>
+                    <th class="one wide"></th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <% questions.forEach(function(question){ %>
+                    <tr>
+                        <td><%= question.author.username.substr(0,20) %></td>
+                        <td>
+                            <% if((question.category.length) > 15) { %>
+                                <%= question.category.substr(0,15) %> ...
+                                <% } else { %>
+                                <%= question.category %>
+                                <% } %>
+                            <!--<%= question.category.substr(0,20) %>--></td>
+
+                        <td><%= question.question.substr(0,100) %></td>
+                        <td class="center aligned">
+                            <% if(question.media) { %>
+                                <i class="large photo icon"></i><% } %>
+                        </td>
+                        <td class="center aligned">
+                            <% if(currentUser && question.author.id.equals(currentUser._id)){ %>
+    
+                                <a class="ui icon" id="tableIcon" href="/questions/<%= question._id %>/edit">
+                                    <i class="large write icon blue"></i>
+                                </a>
+                            <% } %>
+                        </td>
+                        <td class="center aligned">
+                            <% if(currentUser && question.author.id.equals(currentUser._id)){ %>
+    
+                                <form id="delete" action="/questions/<%= question._id %>?_method=DELETE" method="POST">
+                                    <button class="ui icon noborder tableicon"><i class="large remove circle icon red"></i></button>
+                                </form>
+                            <% } %>
+                        </td>
+    
+                    </tr>
+                <% }); %>
+                
+            </tbody>
+            
+        </table>
+        
+        <a href="/questions/new" class="item">
+            <button class="ui icon button blue">Add a new question</button>
+        </a>
+    </div>
+
+
+
+
+</div>
+
+<% include ../partials/footer %>

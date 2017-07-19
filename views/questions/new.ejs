@@ -1,0 +1,45 @@
+<% include ../partials/header %>
+
+<div class="ui main container">
+    
+    <div class="ui text container">
+        <h1 class="ui huge header">Add a new question</h1>
+    </div>
+    
+    <div class="ui text container">
+        <form class="ui form" action="/questions" method="POST">
+            
+            <div class="field">
+                <label>Category</label>
+                <input type="text" placeholder="category" name="question[category]">
+            </div>
+            
+            <div class="field">
+                <label>Question</label>
+                <textarea rows="2" placeholder="question" name="question[question]"></textarea>
+            </div>
+            
+            <div class="field">
+                <label>Answer</label>
+                <input type="text" placeholder="answer" name="question[answer][0]"> 
+            </div>
+            
+            <div class="field">
+                <label>Answer</label>
+                <input type="text" placeholder="answer" name="question[answer][1]"> 
+            </div>
+            
+            <div class="field">
+                <label>Media (URL)</label>
+                <input type="text" placeholder="media" name="question[media]">
+            </div>
+            
+            <button class="ui blue basic button">Add question</button>
+            <a href="/questions" class="ui blue basic button">Go back</a>
+            
+        </form>
+    </div>
+    
+</div>
+
+<% include ../partials/footer %>

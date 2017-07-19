@@ -1,0 +1,44 @@
+<% include ../partials/header %>
+
+<div class="ui main container">
+    
+    <div class="ui text container">
+        <h1 class="ui huge header">Edit a questions</h1>
+    </div>
+    
+    <div class="ui segment container">
+        <form class="ui form" action="/questions/<%= question._id %>?_method=PUT" method="POST">
+            
+            <div class="field">
+                <label>Category</label>
+                <input type="text" value="<%= question.category %>" name="question[category]">
+            </div>
+            
+            <div class="field">
+                <label>Question</label>
+                <textarea rows="2" name="question[question]"><%= question.question %></textarea>
+            </div>
+            
+            <% for (i = 0; i = question.answer.length; i++) { %>       
+                <div class="field">
+                    <label>Answer</label>
+                    <input type="text" value="<%= question.answer[i] %>" name="question[answer]">
+                </div>
+             <% }%>
+    
+            <div class="field">
+                <label>Media (URL)</label>
+                <input type="text" value="<%= question.media %>" name="question[media]">
+            </div>
+            
+            <button class="ui blue basic button">Save changes</button>
+            <a href="/questions" class="ui blue basic button">Go back</a>
+            
+        </form>
+    </div>
+    
+</div>
+
+
+
+<% include ../partials/footer %>

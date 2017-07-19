@@ -1,0 +1,8 @@
+#delete {
+    display: inline;
+}
+
+.noborder {
+    border: none;
+    background-color: white;
+}

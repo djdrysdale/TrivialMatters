@@ -16,7 +16,8 @@ var questionRoutes          = require("./routes/questions.js"),
     playRoutes              = require("./routes/play.js");
 
 // Configuration
-mongoose.connect("mongodb://localhost/trivia");
+mongoose.connect("mongodb://trivia:vagma832@ds161012.mlab.com:61012/trivialmatters");
+// mongoose.connect("mongodb://localhost/trivia");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));

@@ -18,7 +18,7 @@ var questionRoutes          = require("./routes/questions.js"),
 console.log(process.env.DATABASEURL);
 
 // Configuration
-// mongoose.connect("mongodb://trivia:vagma832@ds161012.mlab.com:61012/trivialmatters");
+
 mongoose.connect(process.env.DATABASEURL);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");

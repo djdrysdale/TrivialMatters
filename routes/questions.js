@@ -56,7 +56,6 @@ router.get("/:id/edit", middleware.isLoggedIn, function(req, res){
             req.flash("error","You need to be logged in to do that.");
             res.redirect("back");
         } else {
-            foundQuestion.answer = foundQuestion.answer.filter(Boolean);
             res.render("questions/edit", {question: foundQuestion});
         }
     });
@@ -69,7 +68,6 @@ router.put("/:id", middleware.isLoggedIn, function(req, res){
             req.flash("error", "You need to be logged in to do that.");
             res.redirect("back");
         } else {
-            updatedQuestion.answer = updatedQuestion.answer.filter(Boolean);
             req.flash("success","Question updated.");
             res.redirect("/questions");
         }

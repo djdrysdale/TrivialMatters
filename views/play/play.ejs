@@ -9,25 +9,31 @@
     <div class="ui container">
 
             <% if(randomQuestion.media) { %>
-                <!--<div class="content">-->
+
                     <div class="image">
                         <img class="ui fluid image" src="<%= randomQuestion.media %>"> 
                     </div>
-                <!--</div>-->
+
             <% } %>
 
     
         <div class="ui padded text content segment">
                 <h3 class="ui header"><%= randomQuestion.question %></h3> 
-                <form class="ui form">
+                <form class="ui form" action="/play/" method="POST">
                     <div class="field">
                         <label>Answer: </label>
                         <input type="text" name="response">
                     </div>
-                    <button class="ui primary button centered">That's my answer!</button>
+                    <input type="hidden" name="questionID" value="<%= randomQuestion.id %>">
+                    <p><%= randomQuestion.answer %></p>
+                    <button class="ui primary button centered" id="answerButton">That's my answer!</button>
                 </form>
         </div>
     </div>
  
+ 
+
+
+
 
 <% include ../partials/footer %>

@@ -20,9 +20,10 @@
         <div class="ui padded text content segment">
                 <h3 class="ui header"><%= randomQuestion.question %></h3> 
                 <form class="ui form" action="/play/" method="POST">
+
                     <div class="field">
                         <label>Answer: </label>
-                        <input type="text" name="response">
+                        <input type="text" name="response" autocomplete"off">
                     </div>
                     <input type="hidden" name="questionID" value="<%= randomQuestion.id %>">
 

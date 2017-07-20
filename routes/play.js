@@ -25,11 +25,9 @@ router.post("/", function(req,res){
             req.flash("error",err);
         } else {
             if(foundQuestion.answer.indexOf(req.body.response) > -1){
-                console.log("Correct answer is " + foundQuestion.answer + " and your answer was " + req.body.response);
                 req.flash("success", "That is the correct answer!");
                 res.redirect("/play" );
             } else {
-                console.log("Correct answer is " + foundQuestion.answer + " and your response was " + req.body.response);
                 req.flash("error", "That response was incorrect.");
                 res.redirect("/play" );
             }

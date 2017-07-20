@@ -2,13 +2,9 @@ var     express             = require("express"),
         router              = express.Router(),
         Question            = require("../models/question.js");
         
-
-
-
-
-
 // Quiz Home
 router.get("/", function(req,res){
+    questionsAsked += 1;
     Question.findOneRandom(function(err, randomQuestion){
         if(err){
             req.flash("error",err.message);
@@ -25,10 +21,13 @@ router.post("/", function(req,res){
             req.flash("error",err);
         } else {
             if(foundQuestion.answer.indexOf(req.body.response) > -1){
+                score +=1;
+                console.log(score + "/" + questionsAsked);
                 req.flash("success", "That is the correct answer!");
                 res.redirect("/play" );
             } else {
-                req.flash("error", "That response was incorrect.");
+                console.log(score + "/" + questionsAsked);
+                req.flash("error", "That response was incorrect. The correct answer is " + foundQuestion.answer[0] + ".");
                 res.redirect("/play" );
             }
         }
@@ -36,13 +35,13 @@ router.post("/", function(req,res){
 });
 
 
-var getRandomQuestion = function(){
-    Question.findOneRandom(function(err, randomQuestion){
-        if(!err){
-            console.log(randomQuestion.question);
-        }
-    });
-};
+// var getRandomQuestion = function(){
+//     Question.findOneRandom(function(err, randomQuestion){
+//         if(!err){
+//             console.log(randomQuestion.question);
+//         }
+//     });
+// };
 
 
 module.exports = router;

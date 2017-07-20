@@ -17,6 +17,10 @@ var questionRoutes          = require("./routes/questions.js"),
     
 var url = process.env.DATABASEURL || "mongodb://localhost/trivia"
 
+score = 0;
+questionsAsked = 0;
+
+
 console.log(process.env.DATABASEURL);
 // Configuration
 

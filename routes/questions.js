@@ -7,7 +7,6 @@ var     express                 = require("express"),
 router.get("/", middleware.isLoggedIn, function(req,res){
     
     Question.find({}, function(err, allQuestions){
-        console.log(allQuestions);
     	if(err){
     		req.flash("error", err.message);
     	} else {
@@ -23,7 +22,10 @@ router.get("/new", middleware.isLoggedIn, function(req,res){
 
 //Create route
 router.post("/", function(req, res){
-    console.log(req.user.id);
+
+    console.log(req.body.question.answer);
+    console.log(typeof req.body.question.answer);
+    req.body.question.answer = req.body.question.answer.toLowerCase();
 	Question.create(req.body.question, function(err, newQuestion){
 		if(err){
 		    req.flash("error",err.message);

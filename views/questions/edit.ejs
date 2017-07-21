@@ -1,42 +1,55 @@
 <% include ../partials/header %>
 
-<div class="ui main container">
+<div class="main">
     
-    <div class="ui text container">
-        <h1 class="ui huge header">Edit a question</h1>
+    <div class="header">
+        <h2 class="category">Edit a question</h1>
     </div>
     
-    <div class="ui segment container">
+    <div class="ui text container">
         <form class="ui form" action="/questions/<%= question._id %>?_method=PUT" method="POST">
             
             <div class="field">
-                <label>Category</label>
+                <p class="label">
+                    <label>Category</label>
+                </p>
                 <input type="text" value="<%= question.category %>" name="question[category]">
             </div>
             
             <div class="field">
-                <label>Question</label>
+                <p class="label">
+                    <label>Question</label>
+                </p>
                 <textarea rows="2" name="question[question]"><%= question.question %></textarea>
             </div>
             
             <div class="field" id="dynamicInput">
+                
+                <p class="label">
+                    <label>Acceptable answer(s)</label>
+                </p>
                 <% question.answer.forEach(function(correctAnswer){ %>
-                    <div class="field">
-                        <label>Answer</label>
-                        <input type="text" value="<%= correctAnswer %>" name="question[answer]">
-                    </div>    
+
+                    
+                    <input id="answerField" type="text" value="<%= correctAnswer %>" name="question[answer]">
+  
                 <% }) %>
             </div>
-            <button class="ui green inverted circular icon button" type="button" onClick="addInput('dynamicInput');"><i class="plus icon"></i></button>
+            
+            <div class="field"></div>
+            
+            <button id="addButton" class="ui blue button" type="button" onClick="addInput('dynamicInput');"><i class="plus icon"></i>Add additional answer</button>
 
-    
+            <div class="field"></div>
             <div class="field">
-                <label>Media (URL)</label>
+                <p class="label">
+                    <label>Image (URL)</label>
+                </p>
                 <input type="text" value="<%= question.media %>" name="question[media]">
             </div>
             
-            <button class="ui blue basic button">Save changes</button>
-            <a href="/questions" class="ui blue basic button">Go back</a>
+            <button class="ui green button">Update question</button>
+            <a href="/questions" class="ui red button">Cancel changes</a>
             
         </form>
     </div>

@@ -1,9 +1,9 @@
 <% include ../partials/header %>
 
-<div class="ui main text container segment">
+<div class="main">
     
-    <div class="ui huge header centered">
-        <%= randomQuestion.category %>
+    <div class="header">
+        <h2 class="category"><%= randomQuestion.category %></h1>
     </div>    
 
     <div class="ui container">
@@ -18,12 +18,14 @@
 
     
         <div class="ui padded text content segment">
-                <h3 class="ui header"><%= randomQuestion.question %></h3> 
+                <p class="ui question"><%= randomQuestion.question %></p> 
                 <form class="ui form" action="/play/" method="POST">
 
                     <div class="field">
-                        <label>Answer: </label>
-                        <input type="text" name="response" autocomplete"off">
+                        <p class="label">
+                            <label>Answer: </label>
+                        </p>
+                        <input type="text" id="response" name="response" autocomplete"off">
                     </div>
                     <input type="hidden" name="questionID" value="<%= randomQuestion.id %>">
 
@@ -31,7 +33,7 @@
                 </form>
         </div>
     </div>
- 
+ </div>
  
 
 

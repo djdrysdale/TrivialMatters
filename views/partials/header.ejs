@@ -3,17 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>Trivial Matters</title>
-    <link rel ="stylesheet" type ="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:400,400i,700" rel="stylesheet">
+    
+    <!--<link rel ="stylesheet" type ="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css">
     <link rel="stylesheet" type ="text/css" href="/stylesheets/styles.css">
+
+
 
   </head>
   
   <body>
-    <nav class="ui inverted menu">
+    
+    <nav class="ui inverted menu topNav" id="topNav">
       <div class="ui container">
         <div class="item">
-          <a href="/"><i class="huge white idea icon"></i><strong>Trivial Matters</strong></a>
+          <a href="/"><h1 class="brand"><i class="big white idea icon"></i>Trivial Matters</h1></a>
         </div>
         <div class="item">
           <a href="/play">Play Trivia</a>
@@ -24,10 +30,10 @@
           </div>
         <% } else { %>
           <div class="item">
-            <a href="/questions/new">Add New Question</a>
+            <a href="/questions/new">Add a Question</a>
           </div>
           <div class="item">
-            <a href="/questions">Manage Questions</a>
+            <a href="/questions">Manage questions</a>
           </div>
           <div class="item right aligned">
             <a href="#"><%= currentUser.username %></a>
@@ -40,7 +46,7 @@
     </nav>
 
 
-    <div class="ui text container">
+    <div class="contentBlock">
 
         <% if(error && error.length > 0){ %>
 

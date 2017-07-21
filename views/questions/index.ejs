@@ -1,12 +1,12 @@
 <% include ../partials/header %>
 
-<div class="ui main container">
+<div class="main">
     
-    <div class="ui text container">
-        <h1 class="ui huge header">Manage Questions</h1>
+    <div class="header">
+        <h2 class="category">Manage Questions</h1>
     </div>
     
-    <div class="ui text vertical padded segment container">
+    <div class="ui container">
         
         <table class="ui very basic sixteen column padded table">
             <thead>
@@ -49,7 +49,7 @@
                             <% if((currentUser.admin) || currentUser && question.author.id.equals(currentUser._id)){ %>
     
                                 <form id="delete" action="/questions/<%= question._id %>?_method=DELETE" method="POST">
-                                    <button class="ui icon noborder tableicon"><i class="large remove circle icon red"></i></button>
+                                    <button class="ui icon noborder tableicon" id="deleteQuestion"><i class="large remove icon  red"></i></button>
                                 </form>
                             <% } %>
                         </td>

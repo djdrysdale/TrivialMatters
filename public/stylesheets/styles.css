@@ -1,3 +1,93 @@
+
+body, html {
+    height: 100%;
+}
+
+body {
+    background:#f8f8f8;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.brand {
+
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Bree Serif', serif;
+    text-transform:uppercase;
+}
+
+#topNav {
+    background:#4d8693;
+    font-family: 'Bree Serif', serif;
+    margin-bottom: 0;
+}
+
+
+
+.main {
+    background-color: #f8f8f8;
+    margin: 0;
+}
+
+.contentBlock {
+    margin-top: 0;
+    background-color: red;
+    width: 100%;
+    padding: 0 25%;
+}
+
+
+.header {
+    margin: 2em 25%;
+}
+
+
+.category {
+    font-family: 'Bree Serif', serif;
+    text-align: center;
+    font-size: 3.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.question {
+    font-size: 2em;
+    font-family: 'Open Sans', sans-serif;    
+}
+
+.label {
+    font-size: 1.25em;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#answerButton {
+    text-align:center;
+    font-size: 1.5em;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#answerField {
+    margin-bottom: 1em;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#dynamicInput {
+    display: inline;
+
+
+}
+
+#addButton {
+    margin: 0 0 1em 0;
+
+}
+
+
+#deleteQuestion {
+    background-color: #f8f8f8;
+}
+
 #delete {
     display: inline;
 }
@@ -7,3 +97,8 @@
     background-color: white;
 }
 
+#response {
+    background:#f8f8f8;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5em;
+}

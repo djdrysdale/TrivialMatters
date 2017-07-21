@@ -23,8 +23,10 @@ router.get("/new", middleware.isLoggedIn, function(req,res){
 //Create route
 router.post("/", function(req, res){
 
+    var count = 0;
     req.body.question.answer.forEach(function(answer){
-        req.body.question.answer = answer.toLowerCase();
+        req.body.question.answer[count] = answer.toLowerCase();
+        count++;
     });
 	Question.create(req.body.question, function(err, newQuestion){
 		if(err){

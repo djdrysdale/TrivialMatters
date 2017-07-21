@@ -19,10 +19,13 @@
                 <textarea rows="2" name="question[question]"><%= question.question %></textarea>
             </div>
             
-            <div class="field">
-                <label>Answer</label>
-                <input type="text" value="<%= question.answer %>" name="question[answer]">
-            </div>
+            <% question.answer.forEach(function(correctAnswer){ %>
+                <div class="field">
+                    <label>Answer</label>
+                <input type="text" value="<%= correctAnswer %>" name="question[answer]">
+            </div>    
+            <% }) %>
+
     
             <div class="field">
                 <label>Media (URL)</label>

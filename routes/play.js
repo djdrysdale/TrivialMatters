@@ -18,6 +18,8 @@ router.get("/", function(req,res){
 router.post("/", function(req,res){
     Question.findById(req.body.questionID, function(err, foundQuestion){
         req.body.response = req.body.response.toLowerCase();
+
+        
         if(err) {
             req.flash("error",err);
         } else {

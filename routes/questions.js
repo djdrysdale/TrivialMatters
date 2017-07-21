@@ -24,7 +24,7 @@ router.get("/new", middleware.isLoggedIn, function(req,res){
 router.post("/", function(req, res){
 
     req.body.question.answer.forEach(function(answer){
-        answer.toLowerCase();
+        req.body.question.answer = answer.toLowerCase();
     });
 	Question.create(req.body.question, function(err, newQuestion){
 		if(err){

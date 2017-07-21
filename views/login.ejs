@@ -1,25 +1,33 @@
 <% include ./partials/header %>
 
-<div class="ui main container">
+<div class="main">
     
-    <div class="ui text container">
-        <h1 class="ui huge header">Log in to your account</h1>
+    <div class="header">
+        <h2 class="category">Log in to your account</h1>
     </div> 
 
     <div class="ui text container">
-        <form class="ui form" action="/login" method="POST">
-            <div class="field">
-                <label>Username</label>
-                <input type="text" name="username" placeholder="username">
-            </div>
-            <div class="field">
-                <label>Password</label>
-                <input type="password" name="password" placeholder="password">
-            </div>
-            
-            <button class="ui button green">Log in</button>
-
-        </form>
+        
+        <div class="ui padded text content segment">
+        
+            <form class="ui form" action="/login" method="POST">
+                <div class="field">
+                    <p class="label">
+                        <label>Username</label>
+                    </p>
+                    <input type="text" name="username" placeholder="username">
+                </div>
+                <div class="field">
+                    <p class="label">
+                        <label>Password</label>
+                    </p>
+                    <input type="password" name="password" placeholder="password">
+                </div>
+                
+                <button class="ui button green">Log in</button>
+    
+            </form>
+        </div>
     </div>
  
 

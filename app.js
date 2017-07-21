@@ -8,8 +8,7 @@ var express 	            = require("express"),
 	User                    = require("./models/user"),
 	Question                = require("./models/question"),
 	LocalStrategy           = require("passport-local"),
-	passportLocalMongoose   = require("passport-local-mongoose"),
-	initialize              = require("./middleware/initialize.js");
+	passportLocalMongoose   = require("passport-local-mongoose");
 	
 	
 var questionRoutes          = require("./routes/questions.js"),

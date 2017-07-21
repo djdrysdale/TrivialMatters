@@ -22,26 +22,15 @@ router.post("/", function(req,res){
         } else {
             if(foundQuestion.answer.indexOf(req.body.response) > -1){
                 score +=1;
-                console.log(score + "/" + questionsAsked);
                 req.flash("success", "That is the correct answer!");
                 res.redirect("/play" );
             } else {
-                console.log(score + "/" + questionsAsked);
                 req.flash("error", "That response was incorrect. The correct answer is " + foundQuestion.answer[0] + ".");
                 res.redirect("/play" );
             }
         }
     });
 });
-
-
-// var getRandomQuestion = function(){
-//     Question.findOneRandom(function(err, randomQuestion){
-//         if(!err){
-//             console.log(randomQuestion.question);
-//         }
-//     });
-// };
 
 
 module.exports = router;

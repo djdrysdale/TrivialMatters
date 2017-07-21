@@ -19,12 +19,14 @@
                 <textarea rows="2" placeholder="question" name="question[question]"></textarea>
             </div>
             
-            <div class="field">
+            <div class="field" id="dynamicInput">
                 <label>Answer</label>
-                <input type="text" placeholder="answer" name="question[answer]"> 
-            </div>
+                <input type="text" placeholder="answer" name="question[answer][0]"> 
 
-            
+            </div>
+            <button class="ui green inverted circular icon button" type="button" onClick="addInput('dynamicInput');"><i class="plus icon"></i></button>
+
+
             <div class="field">
                 <label>Media (URL)</label>
                 <input type="text" placeholder="media" name="question[media]">
@@ -37,5 +39,7 @@
     </div>
     
 </div>
+
+<script src="/js/addInput.js" language="Javascript" type="text/javascript"></script>
 
 <% include ../partials/footer %>

@@ -3,7 +3,7 @@
 <div class="ui main container">
     
     <div class="ui text container">
-        <h1 class="ui huge header">Edit a questions</h1>
+        <h1 class="ui huge header">Edit a question</h1>
     </div>
     
     <div class="ui segment container">
@@ -19,12 +19,15 @@
                 <textarea rows="2" name="question[question]"><%= question.question %></textarea>
             </div>
             
-            <% question.answer.forEach(function(correctAnswer){ %>
-                <div class="field">
-                    <label>Answer</label>
-                <input type="text" value="<%= correctAnswer %>" name="question[answer]">
-            </div>    
-            <% }) %>
+            <div class="field" id="dynamicInput">
+                <% question.answer.forEach(function(correctAnswer){ %>
+                    <div class="field">
+                        <label>Answer</label>
+                        <input type="text" value="<%= correctAnswer %>" name="question[answer]">
+                    </div>    
+                <% }) %>
+            </div>
+            <button class="ui green inverted circular icon button" type="button" onClick="addInput('dynamicInput');"><i class="plus icon"></i></button>
 
     
             <div class="field">
@@ -41,5 +44,5 @@
 </div>
 
 
-
+<script src="/js/addInput.js" language="Javascript" type="text/javascript"></script>
 <% include ../partials/footer %>

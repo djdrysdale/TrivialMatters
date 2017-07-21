@@ -8,20 +8,18 @@ var express 	            = require("express"),
 	User                    = require("./models/user"),
 	Question                = require("./models/question"),
 	LocalStrategy           = require("passport-local"),
-	passportLocalMongoose   = require("passport-local-mongoose");
+	passportLocalMongoose   = require("passport-local-mongoose"),
+	initialize              = require("./middleware/initialize.js");
 	
 	
 var questionRoutes          = require("./routes/questions.js"),
     indexRoutes             = require("./routes/index.js"),
     playRoutes              = require("./routes/play.js");
     
-var url = process.env.DATABASEURL || "mongodb://localhost/trivia"
-
-score = 0;
-questionsAsked = 0;
+var url = process.env.DATABASEURL || "mongodb://localhost/trivia";
 
 
-console.log(process.env.DATABASEURL);
+
 // Configuration
 
 mongoose.connect(url);
@@ -63,5 +61,3 @@ app.use("/", indexRoutes);
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server is running."); 
 });
-
-

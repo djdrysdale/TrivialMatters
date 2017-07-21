@@ -4,14 +4,15 @@ var     express             = require("express"),
         
 // Quiz Home
 router.get("/", function(req,res){
-    questionsAsked += 1;
-    Question.findOneRandom(function(err, randomQuestion){
-        if(err){
-            req.flash("error",err.message);
-        } else {
-            res.render("play/play", {randomQuestion:randomQuestion});
-        }
-    });
+
+        Question.findOneRandom(function(err, randomQuestion){
+            if(err){
+                req.flash("error",err.message);
+            } else {
+                res.render("play/play", {randomQuestion:randomQuestion});
+            }
+        });
+
 });
 
 router.post("/", function(req,res){
@@ -21,7 +22,6 @@ router.post("/", function(req,res){
             req.flash("error",err);
         } else {
             if(foundQuestion.answer.indexOf(req.body.response) > -1){
-                score +=1;
                 req.flash("success", "That is the correct answer!");
                 res.redirect("/play" );
             } else {

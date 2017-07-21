@@ -23,7 +23,6 @@ router.get("/new", middleware.isLoggedIn, function(req,res){
 //Create route
 router.post("/", function(req, res){
 
-    console.log(req.body.question.answer);
     req.body.question.answer.forEach(function(answer){
         answer.toLowerCase();
     });

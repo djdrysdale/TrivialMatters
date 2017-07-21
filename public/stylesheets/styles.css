@@ -23,7 +23,6 @@ body {
 }
 
 
-
 .main {
     background-color: #f8f8f8;
     margin: 0;
@@ -31,7 +30,6 @@ body {
 
 .contentBlock {
     margin-top: 0;
-    background-color: red;
     width: 100%;
     padding: 0 25%;
 }

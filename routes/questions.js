@@ -68,8 +68,21 @@ router.get("/:id/edit", middleware.isLoggedIn, function(req, res){
 });
 
 //Update Route
+
+
+
 router.put("/:id", middleware.isLoggedIn, function(req, res){
+    
+        var count = 0;
+        req.body.question.answer.forEach(function(answer){
+            req.body.question.answer[count] = req.body.question.answer[count].toLowerCase();
+            count++;
+        });
+    
+    
     Question.findByIdAndUpdate(req.params.id, req.body.question, function(err, updatedQuestion){
+        
+
         if(err){
             req.flash("error", "You need to be logged in to do that.");
             res.redirect("back");

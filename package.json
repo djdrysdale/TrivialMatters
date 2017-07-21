@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "engines": {
-    "node": "4.7.3",
-    "npm": "2.15.11"
-  }
   "dependencies": {
     "better-console": "^1.0.0",
     "body-parser": "^1.17.2",

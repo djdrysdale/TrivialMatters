@@ -67,6 +67,7 @@ router.get("/category/:category", middleware.isLoggedIn, function(req,res){
     
     Question.find({category: req.params.category}, function(err, filteredQuestions){
         if(err){
+            console.log(err);
             req.flash("error", err.message);
             res.redirect("back");
         } else {

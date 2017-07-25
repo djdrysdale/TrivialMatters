@@ -8,6 +8,7 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+
 .brand {
 
     font-size: 1.5em;
@@ -30,14 +31,38 @@ body {
 
 .contentBlock {
     margin-top: 0;
+    margin-bottom: 1em;
     width: 100%;
     padding: 0 25%;
 }
 
+.tagList {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 100%;
+
+}
+
+.tagList a:link {
+    color: #f8f8f8;
+}
+
+.tagList a:visited {
+    color: #f8f8f8;
+}
+
+.tag {
+    display: inline-block;
+    color: #f8f8f8;
+    background-color:#4d8693;
+    padding: 0.5em;
+    
+}
 
 .header {
     margin: 2em 25%;
 }
+
 
 
 .category {

@@ -6,11 +6,22 @@ var     express                 = require("express"),
 //index route
 router.get("/", middleware.isLoggedIn, function(req,res){
     
+    var categoryList = [];
+    Question.find({}).distinct("category", function(err, categories){
+        if(err) {
+            console.log(err);
+        } else {
+            categoryList = categories;
+        }
+    });
+
+    
     Question.find({}, function(err, allQuestions){
     	if(err){
     		req.flash("error", err.message);
+    		res.redirect("back");
     	} else {
-    		res.render("questions/index", {questions:allQuestions});
+    		res.render("questions/index", {questions:allQuestions, categories: categoryList});
     	}
     });
 });
@@ -32,7 +43,7 @@ router.post("/", function(req, res){
 	Question.create(req.body.question, function(err, newQuestion){
 		if(err){
 		    req.flash("error",err.message);
-			res.render("questions/new");
+			res.redirect("back");
 		} else {
 		    newQuestion.author.id = req.user.id;
 		    newQuestion.author.username = req.user.username;
@@ -45,11 +56,21 @@ router.post("/", function(req, res){
 
 router.get("/category/:category", middleware.isLoggedIn, function(req,res){
     
+    var categoryList = [];
+    Question.find({}).distinct("category", function(err, categories){
+        if(err) {
+            console.log(err);
+        } else {
+            categoryList = categories;
+        }
+    });
+    
     Question.find({category: req.params.category}, function(err, filteredQuestions){
         if(err){
             req.flash("error", err.message);
+            res.redirect("back");
         } else {
-            res.render("questions/index", {questions:filteredQuestions});
+            res.render("questions/index", {questions:filteredQuestions,categories: categoryList});
         }
     });
 });
@@ -60,7 +81,7 @@ router.get("/:id", middleware.isLoggedIn, function(req, res){
 	Question.findById(req.params.id, function(err, foundQuestion){
 		if(err){
 			req.flash("error","You need to be logged in to do that.");
-			req.redirect("back");
+			res.redirect("back");
 		} else {
 
 			res.render("questions/show", {question: foundQuestion});
@@ -107,6 +128,7 @@ router.delete("/:id", middleware.isLoggedIn, function(req, res){
     Question.findByIdAndRemove(req.params.id, function(err, deletedQuestion){
         if(err){
             req.flash("error","You need to be logged in to do that.");
+            res.redirect("back");
         } else {
             req.flash("success","Question deleted.");
             res.redirect("/questions");

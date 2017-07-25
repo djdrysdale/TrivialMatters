@@ -26,9 +26,9 @@
                         <td><%= question.author.username.substr(0,20) %></td>
                         <td>
                             <% if((question.category.length) > 15) { %>
-                                <%= question.category.substr(0,15) %> ...
+                                <a href="/questions/category/<%= question.category %>"><%= question.category.substr(0,15) %> ...</a>
                                 <% } else { %>
-                                <%= question.category %>
+                                <a href="/questions/category/<%= question.category %>"><%= question.category %></a>
                                 <% } %>
                         </td>
 

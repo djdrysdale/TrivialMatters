@@ -15,6 +15,7 @@ router.get("/", middleware.isLoggedIn, function(req,res){
     });
 });
 
+
 //New route
 router.get("/new", middleware.isLoggedIn, function(req,res){
     res.render("questions/new");
@@ -42,6 +43,18 @@ router.post("/", function(req, res){
 	});
 });
 
+router.get("/category/:category", middleware.isLoggedIn, function(req,res){
+    
+    Question.find({category: req.params.category}, function(err, filteredQuestions){
+        if(err){
+            req.flash("error", err.message);
+        } else {
+            res.render("questions/index", {questions:filteredQuestions});
+        }
+    });
+});
+
+
 //Show route
 router.get("/:id", middleware.isLoggedIn, function(req, res){
 	Question.findById(req.params.id, function(err, foundQuestion){
@@ -54,6 +67,8 @@ router.get("/:id", middleware.isLoggedIn, function(req, res){
 		}
 	});
 });
+
+
 
 //Edit Route
 router.get("/:id/edit", middleware.isLoggedIn, function(req, res){
@@ -69,8 +84,6 @@ router.get("/:id/edit", middleware.isLoggedIn, function(req, res){
 
 //Update Route
 
-
-
 router.put("/:id", middleware.isLoggedIn, function(req, res){
     
         var count = 0;
@@ -78,11 +91,7 @@ router.put("/:id", middleware.isLoggedIn, function(req, res){
             req.body.question.answer[count] = req.body.question.answer[count].toLowerCase();
             count++;
         });
-    
-    
     Question.findByIdAndUpdate(req.params.id, req.body.question, function(err, updatedQuestion){
-        
-
         if(err){
             req.flash("error", "You need to be logged in to do that.");
             res.redirect("back");

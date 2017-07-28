@@ -1,6 +1,7 @@
 var     express             = require("express"),
         router              = express.Router(),
         async               = require('async'),
+        stringSimilarity    = require('string-similarity'),
         Question            = require("../models/question.js");
         
 var score = 0;
@@ -39,16 +40,27 @@ router.post("/", function(req,res){
         if(err) {
             req.flash("error",err);
         } else {
-
-            if(foundQuestion.answer.indexOf(req.body.response) > -1){
+            
+            if(checkAnswer(req.body.response, foundQuestion.answer)) {
                 setScore();
                 req.flash("success", "That is the correct answer!");
-                res.redirect("/play" );
+                res.redirect("/play");                    
             } else {
                 req.flash("error", "That response was incorrect. The correct answer is " + foundQuestion.answer[0] + ".");
-                res.redirect("/play" );
+                res.redirect("/play" );                    
             }
         }
+            
+
+            // if(foundQuestion.answer.indexOf(req.body.response) > -1){
+            //     setScore();
+            //     req.flash("success", "That is the correct answer!");
+            //     res.redirect("/play" );
+            // } else {
+            //     req.flash("error", "That response was incorrect. The correct answer is " + foundQuestion.answer[0] + ".");
+            //     res.redirect("/play" );
+            // }
+
     });
 });
 
@@ -70,19 +82,6 @@ router.post("/", function(req,res){
 //                 res.redirect("/play" );
 //             }
 //         }
-//     });
-// });
-
-
-// router.get("/q/", function(req,res){
-    
-//     getQuestions(function(err, quiz) {
-//         if(err){
-//             req.flash("error", err.message);
-//             res.redirect("back");
-//         }
-//         console.log(quiz);
-//         res.render("play/play2", {quiz:quiz});
 //     });
 // });
 
@@ -142,6 +141,15 @@ function initQuiz(){
     }
 });
     
+}
+
+function checkAnswer(userResponse, answerArray){
+    var answerScore = stringSimilarity.findBestMatch(userResponse, answerArray).bestMatch.rating;
+    if (answerScore > 0.5) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 module.exports = router;

@@ -23,6 +23,7 @@
     "request": "^2.81.0",
     "require-dot-file": "^0.4.0",
     "run-sequence": "^2.0.0",
+    "string-similarity": "^1.2.0",
     "xmlhttprequest": "^1.8.0",
     "yamljs": "^0.3.0"
   },

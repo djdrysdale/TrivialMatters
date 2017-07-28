@@ -20,7 +20,7 @@ getQuestions(function(err, quiz){
 
 router.get("/", function(req, res){
 
-    if(questionCount === questions.length){
+    if(questionCount = questions.length){
         res.render("play/play", {count:questionCount,playerScore:score,randomQuestion:questions[questionCount]});
     } else {
         var playerScore = score;

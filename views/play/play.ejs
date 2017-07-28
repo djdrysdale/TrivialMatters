@@ -3,7 +3,10 @@
 <div class="main">
     
     <div class="header">
+        <h2 class="category"><%= count + 1 %></h1>
+
         <h2 class="category"><%= randomQuestion.category %></h1>
+
     </div>    
 
     <div class="ui container">
@@ -28,8 +31,10 @@
                         <input type="text" id="response" name="response" autocomplete"off">
                     </div>
                     <input type="hidden" name="questionID" value="<%= randomQuestion.id %>">
+                    <input type="hidden" name="count" value="<%= count + 1 %>">
+                    <input type="hidden" name="playerScore" value="<%= playerScore + 1 %>">
 
-                    <button class="ui primary button centered" id="answerButton">That's my answer!</button>
+                    <center><button class="ui primary button centered" id="answerButton">That's my answer!</button></center>
                 </form>
         </div>
     </div>

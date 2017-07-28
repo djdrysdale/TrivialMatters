@@ -40,12 +40,14 @@
             <a href="/login">Login</a>
           </div>
         <% } else { %>
-          <div class="item">
-            <a href="/questions/new">Add a Question</a>
-          </div>
-          <div class="item">
-            <a href="/questions">Manage questions</a>
-          </div>
+          <% if (currentUser.admin) { %>
+            <div class="item">
+              <a href="/questions/new">Add a Question</a>
+            </div>
+            <div class="item">
+              <a href="/questions">Manage questions</a>
+            </div>
+          <% } %>
           <div class="item right aligned">
             <a href="#"><%= currentUser.username %></a>
           </div>

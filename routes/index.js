@@ -20,10 +20,8 @@ router.get("/register", function(req, res){
 router.post("/register", function(req, res){
     User.register(new User({username: req.body.username, admin:req.body.admin}), req.body.password, function(err, user){
         if(err){
-            console.log(err);
-            console.log(err.message.length);
             req.flash("error", err.message);
-            return res.render("register");
+            return res.redirect("back");
         } else {
             passport.authenticate("local")(req,res,function(){
                 req.flash("success", "Welcome to Trivial Matters, " + user.username);
@@ -45,7 +43,7 @@ router.get("/login", function(req, res){
 
 // login logic
 router.post("/login", passport.authenticate("local", {
-        successRedirect: "/questions",
+        successRedirect: "/",
         failureRedirect: "/register"
     }),function(req, res){
     

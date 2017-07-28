@@ -15,7 +15,6 @@ router.get("/", middleware.isLoggedIn, function(req,res){
         }
     });
 
-    
     Question.find({}, function(err, allQuestions){
     	if(err){
     		req.flash("error", err.message);

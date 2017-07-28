@@ -8,6 +8,7 @@
         <h2 class="category"><%= randomQuestion.category %></h1>
 
     </div>    
+    
 
     <div class="ui container">
 
@@ -36,6 +37,19 @@
 
                     <center><button class="ui primary button centered" id="answerButton">That's my answer!</button></center>
                 </form>
+                
+
+        </div>
+        
+        <div class="ui padded text content segment scoring">
+            <center>
+                <% for(i = 0; i < playerScore; i++) { %>
+                    <li class="score"><i class="huge green checkmark icon"></i></li>
+                <% } %>
+                <% for (i = 0; i < (count - playerScore); i++) { %>
+                    <li class="score"><i class="huge red remove icon"></i></li>
+                <% } %>
+            </center>
         </div>
     </div>
  </div>

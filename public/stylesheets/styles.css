@@ -59,6 +59,15 @@ body {
     
 }
 
+.score {
+    display: inline;
+    
+}
+
+.scoring {
+    min-height: 100px;
+}
+
 .header {
     margin: 2em 25%;
 }

@@ -24,8 +24,9 @@ router.get("/", function(req, res){
         res.render("play/play", {count:questionCount,playerScore:score,randomQuestion:questions[questionCount]});
     } else {
         var playerScore = score;
+        var totalCount = questionCount;
         initQuiz();
-        res.render("play/finish", {playerScore:playerScore});
+        res.render("play/finish", {playerScore:playerScore, questionCount:totalCount});
     }
 });
 

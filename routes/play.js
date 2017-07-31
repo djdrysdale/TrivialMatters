@@ -50,41 +50,9 @@ router.post("/", function(req,res){
                 res.redirect("/play" );                    
             }
         }
-            
-
-            // if(foundQuestion.answer.indexOf(req.body.response) > -1){
-            //     setScore();
-            //     req.flash("success", "That is the correct answer!");
-            //     res.redirect("/play" );
-            // } else {
-            //     req.flash("error", "That response was incorrect. The correct answer is " + foundQuestion.answer[0] + ".");
-            //     res.redirect("/play" );
-            // }
 
     });
 });
-
-// router.post("/", function(req,res){
-    
-//     questionCount++;
-//     Question.findById(req.body.questionID, function(err, foundQuestion){
-//         req.body.response = req.body.response.toLowerCase();
-        
-//         if(err) {
-//             req.flash("error",err);
-//         } else {
-//             if(foundQuestion.answer.indexOf(req.body.response) > -1){
-//                 setScore();
-//                 req.flash("success", "That is the correct answer!");
-//                 res.redirect("/play" );
-//             } else {
-//                 req.flash("error", "That response was incorrect. The correct answer is " + foundQuestion.answer[0] + ".");
-//                 res.redirect("/play" );
-//             }
-//         }
-//     });
-// });
-
 
 function getQuestions(cb) {
     
@@ -145,7 +113,7 @@ function initQuiz(){
 
 function checkAnswer(userResponse, answerArray){
     var answerScore = stringSimilarity.findBestMatch(userResponse, answerArray).bestMatch.rating;
-    if (answerScore > 0.5) {
+    if (answerScore > 0.75) {
         return true;
     } else {
         return false;
